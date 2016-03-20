@@ -59,6 +59,15 @@ public class MembersTest {
         assertEquals(expResult, result);
     }
     
+    /**
+     * Test of getSex method, of class Members.
+     */
+    @Test
+    public void testGetRegistrationDate() {
+        String regDate = instance.getRegistrationDate();
+        assertTrue(regDate instanceof String);
+    }
+    
 
     public class MembersImpl extends Members {
 

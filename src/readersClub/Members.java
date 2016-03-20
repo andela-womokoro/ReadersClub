@@ -32,4 +32,8 @@ public abstract class Members {
     public int getAge(){
         return age;
     }
+    
+    public String getRegistrationDate(){
+        return regDate.toString();
+    }
 }
