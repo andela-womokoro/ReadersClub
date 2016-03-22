@@ -16,7 +16,8 @@ public class Staff extends Members implements Readers {
     
     public boolean setWorkHours(int newWorkHours){
         this.workHours = newWorkHours;
-        return true;
+        
+        return this.workHours == newWorkHours;
     }
     
     public double getSalary(){

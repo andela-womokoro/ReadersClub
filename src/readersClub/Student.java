@@ -19,7 +19,8 @@ public class Student extends Members implements Readers {
     
     public boolean setSubjectOfInterest(String subject){
         this.subjectOfInterest = subject;
-        return true;
+        
+        return this.subjectOfInterest.equalsIgnoreCase(subject);
     }
     
     @Override
