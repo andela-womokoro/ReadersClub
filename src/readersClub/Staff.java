@@ -26,6 +26,6 @@ public class Staff extends Members implements Readers {
     
     @Override
     public boolean requestForBook(){
-        return true;
+        return Club.borrowBook(this);
     }
 }
