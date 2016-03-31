@@ -15,7 +15,7 @@ public class Book {
     
     public Book(String title, String isbn, String author) {
         System.out.print("Creating a book \""+ title+"\" for the Readers' club... ");
-        Club.pauseProg(2);
+        Club.pauseProg(1);
         this.title = title;
         this.isbn = isbn;
         this.author = author;

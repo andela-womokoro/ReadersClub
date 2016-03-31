@@ -16,7 +16,7 @@ public abstract class Members {
     
     public Members(String name, String sex, int age, boolean isStaff){
        System.out.print("Creating a new Readers' club member "+ name+"... ");
-       Club.pauseProg(2);
+       Club.pauseProg(1);
        this.name = name;
        this.sex = sex;
        this.age = age;

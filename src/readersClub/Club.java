@@ -2,6 +2,7 @@
 package readersClub;
 
 import java.util.Objects;
+import java.util.PriorityQueue;
 
 /**
  *
@@ -9,8 +10,8 @@ import java.util.Objects;
  */
 public class Club {
     
-//    staffList;
-//    studentsList;
+    public static PriorityQueue<String> staffList = new PriorityQueue();
+    public static PriorityQueue<String> studentsList = new PriorityQueue();
 //    books
     
     public static void main(String[] args){
@@ -30,6 +31,10 @@ public class Club {
         createMember("Tosin Adesanya", "Male", 27, true);
         createMember("Florence Okosun", "Female", 26, true);
         createMember("Jeremy Johnson", "Male", 32, true);
+        
+        // display staff list
+        System.out.println("Staff list >>> "+staffList);
+        System.out.println("Students' list >>> "+studentsList);
     }
     
     public static boolean createBook(String title, String isbn, String author){
@@ -40,6 +45,12 @@ public class Club {
     
     public static boolean createMember(String name, String sex, int age, boolean isStaff){
         Staff member = new Staff(name, sex, age, isStaff);
+        
+        if(isStaff){
+            staffList.add(member.name);
+        } else {
+            studentsList.add(member.name);
+        }
         
         return Objects.nonNull(member);
     }
