@@ -2,6 +2,8 @@
 package readersClub;
 
 import java.util.Objects;
+import java.util.Random;
+import java.util.ArrayList;
 import java.util.PriorityQueue;
 
 /**
@@ -12,18 +14,17 @@ public class Club {
     
     public static PriorityQueue<String> staffList = new PriorityQueue();
     public static PriorityQueue<String> studentsList = new PriorityQueue();
-//    books
+    public static ArrayList books = new ArrayList();
     
     public static void main(String[] args){
         
         //create some books
-        createBook("Alice in Wonderland", "3772819", "Lewis Carol");
         createBook("Frankinstein", "06672679", "Mary Shelley");
         createBook("Spectre", "7665923", "Ian Fleming");
         createBook("Havoc Junction", "9008765", "Joe Donnelly");
         createBook("Finders Keepers", "0087765", "Steven King");
         
-        //create some enthusiastic club members
+        //create some enthusiastic club members. Some are staff, some are student
         createMember("Christina Sass", "Female", 29, true);
         createMember("Harry Smith", "Male", 17, false);
         createMember("Jane Doe", "Female", 16, false);
@@ -32,30 +33,51 @@ public class Club {
         createMember("Florence Okosun", "Female", 26, true);
         createMember("Jeremy Johnson", "Male", 32, true);
         
-        // display staff list
-        System.out.println("Staff list >>> "+staffList);
-        System.out.println("Students' list >>> "+studentsList);
+        // display staff and students' list
+        System.out.println("Staff Queue >>> "+staffList);
+        System.out.println("Students' Queue >>> "+studentsList);
+        
+        // display books
+        System.out.println("All Books:");
+        for(int i=0; i<books.size(); i++){
+            Book b = (Book)books.get(i);
+            System.out.println(b.title+". (available: "+b.isAvailable+")");
+        }
     }
     
     public static boolean createBook(String title, String isbn, String author){
         Book book = new Book(title, isbn, author);
+        Random r = new Random();
+        int copies = r.nextInt(2) + 1;
+        book.setNoOfCopies(copies);
+        
+        for(int i=0; i<copies; i++){
+            books.add(book);
+        }
         
         return Objects.nonNull(book);
     }
     
     public static boolean createMember(String name, String sex, int age, boolean isStaff){
-        Staff member = new Staff(name, sex, age, isStaff);
         
         if(isStaff){
+            Staff member = new Staff(name, sex, age, isStaff);
             staffList.add(member.name);
+            
+            return Objects.nonNull(member);
         } else {
+            Student member = new Student(name, sex, age, isStaff);
             studentsList.add(member.name);
+            
+            return Objects.nonNull(member);
         }
-        
-        return Objects.nonNull(member);
     }
     
     public static boolean borrowBook(Members member, String bookTitle){
+        //check if a copy of the book is available
+        //check member's rank
+        //check member position in queue
+  
         return false;
     }
     
