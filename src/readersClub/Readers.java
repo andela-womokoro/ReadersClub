@@ -7,5 +7,5 @@ package readersClub;
  */
 public interface Readers {
     
-    public boolean requestForBook();
+    public boolean requestForBook(String bookTitle);
 }

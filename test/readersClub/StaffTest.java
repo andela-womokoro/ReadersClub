@@ -16,7 +16,7 @@ public class StaffTest {
     
     @Before
     public void setUp() {
-        instance = new Staff("Wil", "Male", 22);
+        instance = new Staff("Wil", "Male", 22, true);
     }
 
     @After

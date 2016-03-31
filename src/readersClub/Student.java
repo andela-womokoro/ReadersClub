@@ -9,8 +9,8 @@ public class Student extends Members implements Readers {
     
     public String subjectOfInterest;
     
-    public Student(String name, String sex, int age) {
-        super(name, sex, age);
+    public Student(String name, String sex, int age, boolean isStaff) {
+        super(name, sex, age, isStaff);
     }
     
     public String getSubjectOfInterest(){
@@ -24,7 +24,7 @@ public class Student extends Members implements Readers {
     }
     
     @Override
-    public boolean requestForBook(){
+    public boolean requestForBook(String bookTitle){
         return true;
     }
 }

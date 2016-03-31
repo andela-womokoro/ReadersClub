@@ -10,8 +10,8 @@ public class Staff extends Members implements Readers {
     public int workHours;
     public double salary;
     
-    public Staff(String name, String sex, int age) {
-        super(name, sex, age);
+    public Staff(String name, String sex, int age, boolean isStaff) {
+        super(name, sex, age, isStaff);
     }
     
     public boolean setWorkHours(int newWorkHours){
@@ -25,7 +25,7 @@ public class Staff extends Members implements Readers {
     }
     
     @Override
-    public boolean requestForBook(){
-        return Club.borrowBook(this);
+    public boolean requestForBook(String bookTitle){
+        return Club.borrowBook(this, bookTitle);
     }
 }

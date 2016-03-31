@@ -21,7 +21,7 @@ public class MembersTest {
         name = "Wil";
         sex = "Male";
         age = 25;
-        instance = new MembersImpl(name, sex, age);
+        instance = new MembersImpl(name, sex, age, true);
     }
 
     @After
@@ -71,8 +71,8 @@ public class MembersTest {
 
     public class MembersImpl extends Members {
 
-        public MembersImpl(String name, String sex, int age) {
-            super(name, sex, age);
+        public MembersImpl(String name, String sex, int age, boolean isStaff) {
+            super(name, sex, age, isStaff);
         }
     }
 }

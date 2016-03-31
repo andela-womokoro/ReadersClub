@@ -29,7 +29,7 @@ public class StudentTest {
     
     @Before
     public void setUp() {
-        instance = new Student("Mary", "Female", 15);
+        instance = new Student("Mary", "Female", 15, false);
     }
     
     @After

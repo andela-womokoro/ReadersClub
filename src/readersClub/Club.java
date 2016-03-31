@@ -23,13 +23,13 @@ public class Club {
         createBook("Finders Keepers", "0087765", "Steven King");
         
         //create some enthusiastic club members
-        createMember("Christina Sass", "Female", 29);
-        createMember("Harry Smith", "Male", 17);
-        createMember("Jane Doe", "Female", 16);
-        createMember("Dipo Isola", "Male", 18);
-        createMember("Tosin Adesanya", "Male", 27);
-        createMember("Florence Okosun", "Female", 26);
-        createMember("Jeremy Johnson", "Male", 32);
+        createMember("Christina Sass", "Female", 29, true);
+        createMember("Harry Smith", "Male", 17, false);
+        createMember("Jane Doe", "Female", 16, false);
+        createMember("Dipo Isola", "Male", 18, false);
+        createMember("Tosin Adesanya", "Male", 27, true);
+        createMember("Florence Okosun", "Female", 26, true);
+        createMember("Jeremy Johnson", "Male", 32, true);
     }
     
     public static boolean createBook(String title, String isbn, String author){
@@ -38,13 +38,13 @@ public class Club {
         return Objects.nonNull(book);
     }
     
-    public static boolean createMember(String name, String sex, int age){
-        Staff member = new Staff(name, sex, age);
+    public static boolean createMember(String name, String sex, int age, boolean isStaff){
+        Staff member = new Staff(name, sex, age, isStaff);
         
         return Objects.nonNull(member);
     }
     
-    public static boolean borrowBook(Members member, Book book){
+    public static boolean borrowBook(Members member, String bookTitle){
         return false;
     }
     
