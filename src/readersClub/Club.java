@@ -25,20 +25,31 @@ public class Club {
         createBook("Finders Keepers", "0087765", "Steven King");
         
         //create some enthusiastic club members. Some are staff, some are student
-        createMember("Christina Sass", "Female", 29, true);
-        createMember("Harry Smith", "Male", 17, false);
-        createMember("Jane Doe", "Female", 16, false);
-        createMember("Dipo Isola", "Male", 18, false);
-        createMember("Tosin Adesanya", "Male", 27, true);
-        createMember("Florence Okosun", "Female", 26, true);
-        createMember("Jeremy Johnson", "Male", 32, true);
+        Staff m1 = (Staff) createMember("Christina Sass", "Female", 29, true);
+        Student m2 = (Student) createMember("Harry Smith", "Male", 17, false);
+        Student m3 = (Student) createMember("Jane Doe", "Female", 16, false);
+        Student m4 = (Student) createMember("Dipo Isola", "Male", 18, false);
+        Staff m5 = (Staff) createMember("Tosin Adesanya", "Male", 27, true);
+        Staff m6 = (Staff) createMember("Florence Okosun", "Female", 26, true);
+        Staff m7 = (Staff) createMember("Jeremy Johnson", "Male", 32, true);
         
         // display staff and students' list
         System.out.println("Staff Queue >>> "+staffList);
         System.out.println("Students' Queue >>> "+studentsList);
         
         // display books
-        System.out.println("All Books:");
+        System.out.println("All Books before being borrowed:");
+        for(int i=0; i<books.size(); i++){
+            Book b = (Book)books.get(i);
+            System.out.println(b.title+". (available: "+b.isAvailable+")");
+        }
+        
+        // some members will attempt to borrow some books
+        //m1.requestForBook("Spectre");
+        m4.requestForBook("Spectre");
+        
+        // display books
+        System.out.println("All Books after borrowing:");
         for(int i=0; i<books.size(); i++){
             Book b = (Book)books.get(i);
             System.out.println(b.title+". (available: "+b.isAvailable+")");
@@ -46,36 +57,48 @@ public class Club {
     }
     
     public static boolean createBook(String title, String isbn, String author){
-        Book book = new Book(title, isbn, author);
-        Random r = new Random();
-        int copies = r.nextInt(2) + 1;
-        book.setNoOfCopies(copies);
+        Book book = null;
+        int copies = new Random().nextInt(2) + 1;
         
         for(int i=0; i<copies; i++){
+            book = new Book(title, isbn, author);
+            book.setNoOfCopies(copies);
             books.add(book);
         }
         
         return Objects.nonNull(book);
     }
     
-    public static boolean createMember(String name, String sex, int age, boolean isStaff){
+    public static Members createMember(String name, String sex, int age, boolean isStaff){
+        Members member;
         
         if(isStaff){
-            Staff member = new Staff(name, sex, age, isStaff);
+            member = new Staff(name, sex, age, isStaff);
             staffList.add(member.name);
-            
-            return Objects.nonNull(member);
         } else {
-            Student member = new Student(name, sex, age, isStaff);
+            member = new Student(name, sex, age, isStaff);
             studentsList.add(member.name);
-            
-            return Objects.nonNull(member);
         }
+        
+        return member;
     }
     
     public static boolean borrowBook(Members member, String bookTitle){
+        
         //check if a copy of the book is available
-        //check member's rank
+        for(int i=0; i<books.size(); i++){
+            Book b = (Book)books.get(i);
+            
+            if(b.title.equalsIgnoreCase(bookTitle) && b.isAvailable){
+                System.out.println("A copy of "+bookTitle +" is available for borrowing to "+member.name);
+                b.isAvailable = false;
+                //check member's rank
+                
+                break;
+            }
+        }
+        
+        
         //check member position in queue
   
         return false;
