@@ -38,18 +38,19 @@ public class Club {
         System.out.println("Students' Queue >>> "+studentsList);
         
         // display books
-        System.out.println("All Books before being borrowed:");
+        System.out.println("\nBooks' status before being borrowed:");
         for(int i=0; i<books.size(); i++){
             Book b = (Book)books.get(i);
             System.out.println(b.title+". (available: "+b.isAvailable+")");
         }
         
         // some members will attempt to borrow some books
-        //m1.requestForBook("Spectre");
+        System.out.println("");
+        m1.requestForBook("Spectre");
         m4.requestForBook("Spectre");
         
         // display books
-        System.out.println("All Books after borrowing:");
+        System.out.println("\nBooks' status after being borrowed:");
         for(int i=0; i<books.size(); i++){
             Book b = (Book)books.get(i);
             System.out.println(b.title+". (available: "+b.isAvailable+")");
@@ -83,21 +84,24 @@ public class Club {
         return member;
     }
     
-    public static boolean borrowBook(Members member, String bookTitle){
+    public static boolean logBookRequest(Members member, String bookTitle){
+        System.out.println(member.name+ " has requested to borrow a copy of \""+bookTitle+"\"");
         
+        return true;
+    }
+    
+    public static boolean borrowBook(Members member, String bookTitle){
         //check if a copy of the book is available
         for(int i=0; i<books.size(); i++){
             Book b = (Book)books.get(i);
             
             if(b.title.equalsIgnoreCase(bookTitle) && b.isAvailable){
-                System.out.println("A copy of "+bookTitle +" is available for borrowing to "+member.name);
                 b.isAvailable = false;
                 //check member's rank
                 
                 break;
             }
         }
-        
         
         //check member position in queue
   

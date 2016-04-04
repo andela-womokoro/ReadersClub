@@ -25,6 +25,6 @@ public class Student extends Members implements Readers {
     
     @Override
     public boolean requestForBook(String bookTitle){
-        return Club.borrowBook(this, bookTitle);
+        return Club.logBookRequest(this, bookTitle);
     }
 }
