@@ -3,6 +3,7 @@ package readersClub;
 
 import java.util.Objects;
 import java.util.Random;
+import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 
@@ -15,6 +16,7 @@ public class Club {
     public static PriorityQueue<String> staffList = new PriorityQueue();
     public static PriorityQueue<String> studentsList = new PriorityQueue();
     public static ArrayList books = new ArrayList();
+    public static HashMap<String, ArrayList> bookRequests = new HashMap();
     
     public static void main(String[] args){
         
@@ -44,10 +46,17 @@ public class Club {
             System.out.println(b.title+". (available: "+b.isAvailable+")");
         }
         
-        // some members will attempt to borrow some books
+        // some members will request to borrow  books
         System.out.println("");
         m1.requestForBook("Spectre");
         m4.requestForBook("Spectre");
+        m7.requestForBook("Havoc Junction");
+        
+        //display book requests log
+        System.out.println("\nBook requests:");
+        for(String key : bookRequests.keySet()) {
+            System.out.println(key + " : " + bookRequests.get(key));
+        }
         
         // display books
         System.out.println("\nBooks' status after being borrowed:");
@@ -86,6 +95,16 @@ public class Club {
     
     public static boolean logBookRequest(Members member, String bookTitle){
         System.out.println(member.name+ " has requested to borrow a copy of \""+bookTitle+"\"");
+        ArrayList requesters;
+        
+        if(bookRequests.containsKey(bookTitle)){
+            requesters = (ArrayList)bookRequests.get(bookTitle);
+        } else {
+            requesters = new ArrayList();
+        }
+        
+        requesters.add(member);
+        bookRequests.put(bookTitle, requesters);
         
         return true;
     }
