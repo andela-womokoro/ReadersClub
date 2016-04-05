@@ -1,4 +1,3 @@
-
 package readersClub;
 
 import org.junit.After;
@@ -11,9 +10,9 @@ import static org.junit.Assert.*;
  * @author Wil
  */
 public class StaffTest {
-    
+
     public Staff instance;
-    
+
     @Before
     public void setUp() {
         instance = new Staff("Wil", "Male", 22, true);

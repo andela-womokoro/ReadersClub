@@ -1,4 +1,3 @@
-
 package readersClub;
 
 import org.junit.After;
@@ -11,11 +10,12 @@ import static org.junit.Assert.*;
  * @author Wil
  */
 public class MembersTest {
+
     String name;
     String sex;
     int age;
     MembersImpl instance;
-    
+
     @Before
     public void setUp() {
         name = "Wil";
@@ -58,7 +58,7 @@ public class MembersTest {
         String result = instance.getSex();
         assertEquals(expResult, result);
     }
-    
+
     /**
      * Test of getSex method, of class Members.
      */
@@ -67,7 +67,6 @@ public class MembersTest {
         String regDate = instance.getRegistrationDate();
         assertTrue(regDate instanceof String);
     }
-    
 
     public class MembersImpl extends Members {
 

@@ -1,4 +1,3 @@
-
 package readersClub;
 
 import org.junit.After;
@@ -13,25 +12,25 @@ import static org.junit.Assert.*;
  * @author Wil
  */
 public class StudentTest {
-    
+
     public Student instance;
-    
+
     public StudentTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
         instance = new Student("Mary", "Female", 15, false);
     }
-    
+
     @After
     public void tearDown() {
         instance = null;
