@@ -2,6 +2,7 @@
 package readersClub;
 
 import java.util.Objects;
+import java.util.Iterator;
 import java.util.Random;
 import java.util.HashMap;
 import java.util.ArrayList;
@@ -48,15 +49,26 @@ public class Club {
         
         // some members will request to borrow  books
         System.out.println("");
-        m1.requestForBook("Spectre");
+        m3.requestForBook("Spectre");
         m4.requestForBook("Spectre");
-        m7.requestForBook("Havoc Junction");
+        m1.requestForBook("Spectre");
         
         //display book requests log
-        System.out.println("\nBook requests:");
+        /*System.out.println("\nBook requests:");
         for(String key : bookRequests.keySet()) {
             System.out.println(key + " : " + bookRequests.get(key));
         }
+        */
+        /*ddddd
+        ArrayList al = bookRequests.get("Spectre");
+        for(int i=0; i<al.size(); i++){
+            Members m = (Members)al.get(i);
+            System.out.println(m.name+", Staff: "+m.isStaff);
+        }
+        */
+        
+        //borrow books to members who requested for them
+        borrowBook();
         
         // display books
         System.out.println("\nBooks' status after being borrowed:");
@@ -109,21 +121,59 @@ public class Club {
         return true;
     }
     
-    public static boolean borrowBook(Members member, String bookTitle){
-        //check if a copy of the book is available
-        for(int i=0; i<books.size(); i++){
-            Book b = (Book)books.get(i);
+    public static boolean borrowBook(){
+        //iterate through all book requests
+        for(String key : bookRequests.keySet()) {
+            String bookTitle = key;
+            System.out.println("\nProcessing request(s) for \""+bookTitle + "\"...");
             
-            if(b.title.equalsIgnoreCase(bookTitle) && b.isAvailable){
-                b.isAvailable = false;
-                //check member's rank
-                
-                break;
+            //check if more than one person is requesting for the book
+            ArrayList requesters = bookRequests.get(bookTitle);
+            int noOfPeopleRequesting = requesters.size();
+            System.out.println(noOfPeopleRequesting+" person(s) requested for \""+bookTitle+"\".");
+        
+            //iterate through books collection to see how many copies of the requested book are available
+            int bookCopiesAvailable = 0;
+            for(int i=0; i<books.size(); i++){
+                Book b = (Book)books.get(i);
+                if(b.title.equalsIgnoreCase(bookTitle) && b.isAvailable){
+                    bookCopiesAvailable++;
+                }
+            }
+            
+            System.out.println(bookCopiesAvailable +" copies of \""+bookTitle+"\" are available.");
+            
+            //iterate through members' queues; staff queue first, then students' queue
+            for(int g=0; g<=1; g++)
+            {
+                Iterator it;
+                if(g == 0){
+                    it = staffList.iterator();
+                } 
+                else {
+                    it = studentsList.iterator();
+                }
+
+                String nameInQueue;
+                while(it.hasNext()){
+                    nameInQueue = (String) it.next();
+                    for(int h=0; h<noOfPeopleRequesting; h++){
+                        Members m = (Members)requesters.get(h);
+                        if(m.name.equalsIgnoreCase(nameInQueue)){
+                            for(int i=0; i<books.size(); i++){
+                                Book b = (Book)books.get(i);
+                                if(b.title.equalsIgnoreCase(bookTitle) && b.isAvailable){
+                                    System.out.println("Borrowed a copy of \""+bookTitle+"\" to "+m.name);
+                                    b.isAvailable = false;
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                    }
+                }
             }
         }
-        
-        //check member position in queue
-  
         return false;
     }
     
