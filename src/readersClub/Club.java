@@ -18,6 +18,10 @@ public class Club {
     public static ArrayList books = new ArrayList();
     public static HashMap<String, ArrayList> bookRequests = new HashMap();
 
+    /**
+     * Execution starting point of the reader's club program.
+     * @param args 
+     */
     public static void main(String[] args) {
         //create some books
         createBook("Frankinstein", "06672679", "Mary Shelley");
@@ -42,7 +46,7 @@ public class Club {
         System.out.println("\nBooks' status before being borrowed:");
         displayBooks();
 
-        // some members will request to borrow  books
+        // some members will request for books
         System.out.println("");
         m3.requestForBook("Spectre");
         m4.requestForBook("Spectre");
@@ -60,6 +64,13 @@ public class Club {
         displayBooks();
     }
 
+    /**
+     * This method is used to create books for the reader's club.
+     * @param title
+     * @param isbn
+     * @param author
+     * @return 
+     */
     public static boolean createBook(String title, String isbn, String author) {
         Book book = null;
         int copies = new Random().nextInt(3) + 1;
@@ -73,6 +84,9 @@ public class Club {
         return Objects.nonNull(book);
     }
 
+    /**
+     * This method simply displays all the existing books and their current state
+     */
     public static void displayBooks() {
         for (int i = 0; i < books.size(); i++) {
             Book b = (Book) books.get(i);
@@ -80,6 +94,14 @@ public class Club {
         }
     }
 
+    /**
+     * This method is used to create the two categories of members of the readers club; staff and students
+     * @param name
+     * @param sex
+     * @param age
+     * @param isStaff
+     * @return 
+     */
     public static Members createMember(String name, String sex, int age, boolean isStaff) {
         Members member;
 
@@ -94,6 +116,12 @@ public class Club {
         return member;
     }
 
+    /**
+     * When members request to borrow books, this method logs the members requests
+     * @param member
+     * @param bookTitle
+     * @return 
+     */
     public static boolean logBookRequest(Members member, String bookTitle) {
         System.out.println(member.name + " has requested to borrow a copy of \"" + bookTitle + "\"");
         ArrayList requesters;
@@ -110,20 +138,26 @@ public class Club {
         return true;
     }
 
+    /**
+     * This method handles the actual process of borrowing books to members based on rank and position in queue.
+     * @return 
+     */
     public static boolean borrowBook() {
-        //iterate through all book requests
+        //Next for loop iterates through all book requests. Book requests are handled one after the other
         for (String key : bookRequests.keySet()) {
             String bookTitle = key;
             System.out.println("\nProcessing request(s) for \"" + bookTitle + "\"...");
 
-            //check no of people requesting for the book
             ArrayList requesters = bookRequests.get(bookTitle);
             int noOfPeopleRequesting = requesters.size();
 
             System.out.println(noOfPeopleRequesting + " person(s) requested for \"" + bookTitle + "\".");
             System.out.println(getAvailableCopiesCount(bookTitle) + " copies of \"" + bookTitle + "\" are available.");
-
-            //iterate through both members' queues; staff queue first, then students' queue
+ 
+            /*
+            Next for loop performs 2 iterations to iterate through both members' queues;
+            first iteration covers the staff queue, and next iteration covers the students' queue
+            */
             for (int g = 0; g <= 1; g++) {
                 Iterator it;
                 if (g == 0) {
@@ -132,12 +166,24 @@ public class Club {
                     it = studentsList.iterator();
                 }
 
+                /*
+                Next while loop checks the names of members who made a request against the names of each member on
+                the current queue
+                */
                 String nameInQueue;
                 while (it.hasNext()) {
                     nameInQueue = (String) it.next();
+                    /*
+                    Next for loop checks if the current member extracted in the previous line is among 
+                    members who made a request for the book
+                    */
                     for (int h = 0; h < noOfPeopleRequesting; h++) {
                         Members m = (Members) requesters.get(h);
                         if (m.name.equalsIgnoreCase(nameInQueue)) {
+                            /*
+                            Next for loop searches the club's book collection for the requested book.
+                            If the book is found and a copy is available, it is borrowed to the current member.
+                            */
                             for (int i = 0; i < books.size(); i++) {
                                 Book b = (Book) books.get(i);
                                 if (b.title.equalsIgnoreCase(bookTitle) && b.isAvailable) {
@@ -155,6 +201,11 @@ public class Club {
         return false;
     }
 
+    /**
+     * This method simply returns the number of copies of a particular book that are still available
+     * @param bookTitle
+     * @return 
+     */
     public static int getAvailableCopiesCount(String bookTitle) {
         //iterate through books collection to see how many copies of the requested book are available
         int copiesAvailable = 0;
