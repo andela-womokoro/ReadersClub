@@ -1,14 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package readersClub;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -18,34 +11,27 @@ import static org.junit.Assert.*;
  */
 public class ClubTest {
 
-    public ClubTest() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
+    public Members member;
 
     @Before
     public void setUp() {
+        member = new Staff("Wil", "Male", 22, true);
     }
 
     @After
-    public void tearDown() {
+    public void tearDown() throws Exception {
+        member = null;
     }
 
     /**
-     * Test of borrowBook method, of class Club.
+     * Test of borrowBooks method, of class Club.
      */
     @Test
-    public void testBorrowBook() {
+    public void testBorrowBooks() {
         System.out.println("borrowBook");
-        Staff member = new Staff("John Doe", "Male", 23);
-        boolean result = Club.borrowBook(member);
-        assertTrue(result);
+        int expResult = 0;
+        int result = Club.borrowBooks();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -54,23 +40,7 @@ public class ClubTest {
     @Test
     public void testCreateBook() {
         System.out.println("createBook");
-        boolean expResult = false;
-        boolean result = Club.createBook();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of main method, of class Club.
-     */
-    @Test
-    public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        Club.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertNotNull(Club.createBook("title", "isbn", "author"));
     }
 
     /**
@@ -82,23 +52,29 @@ public class ClubTest {
         String name = "";
         String sex = "";
         int age = 0;
-        boolean expResult = false;
-        boolean result = Club.createMember(name, sex, age);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(Club.createMember(name, sex, age, true) instanceof Members);
     }
 
     /**
-     * Test of pauseProg method, of class Club.
+     * Test of logBookRequest method, of class Club.
      */
     @Test
-    public void testPauseProg() {
-        System.out.println("pauseProg");
-        int secs = 0;
-        Club.pauseProg(secs);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testLogBookRequest() {
+        System.out.println("logBookRequest");
+        boolean expResult = true;
+        boolean result = Club.logBookRequest(member, "some title");
+        assertEquals(expResult, result);
     }
 
+    /**
+     * Test of getAvailableCopiesCount method, of class Club.
+     */
+    @Test
+    public void testGetAvailableCopiesCount() {
+        System.out.println("getAvailableCopiesCount");
+        String bookTitle = "Bla bla bla";
+        int expResult = 0;
+        int result = Club.getAvailableCopiesCount(bookTitle);
+        assertEquals(expResult, result);
+    }
 }

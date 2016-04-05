@@ -65,7 +65,7 @@ public class StudentTest {
     @Test
     public void testRequestForBook() {
         System.out.println("requestForBook");
-        boolean requestGranted = instance.requestForBook();
+        boolean requestGranted = instance.requestForBook("Some  book title");
         assertTrue(requestGranted);
     }
 }

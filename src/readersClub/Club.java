@@ -29,7 +29,7 @@ public class Club {
         createBook("Havoc Junction", "9008765", "Joe Donnelly");
         createBook("Finders Keepers", "0087765", "Steven King");
 
-        //create some enthusiastic club members. Some are staff, some are student
+        //create some enthusiastic club members. Some are staff, some are students
         Staff m1 = (Staff) createMember("Christina Sass", "Female", 29, true);
         Student m2 = (Student) createMember("Harry Smith", "Male", 17, false);
         Student m3 = (Student) createMember("Jane Doe", "Female", 16, false);
@@ -54,10 +54,9 @@ public class Club {
         m6.requestForBook("Havoc Junction");
         m5.requestForBook("Havoc Junction");
         m2.requestForBook("Havoc Junction");
-        m1.requestForBook("Havoc Junction");
 
         //borrow books to members who requested for them
-        borrowBook();
+        borrowBooks();
 
         // display books
         System.out.println("\nBooks' status after being borrowed:");
@@ -125,6 +124,7 @@ public class Club {
     public static boolean logBookRequest(Members member, String bookTitle) {
         System.out.println(member.name + " has requested to borrow a copy of \"" + bookTitle + "\"");
         ArrayList requesters;
+        boolean requestLogged = false;
 
         if (bookRequests.containsKey(bookTitle)) {
             requesters = (ArrayList) bookRequests.get(bookTitle);
@@ -134,15 +134,17 @@ public class Club {
 
         requesters.add(member);
         bookRequests.put(bookTitle, requesters);
+        requestLogged = true;
 
-        return true;
+        return requestLogged;
     }
 
     /**
      * This method handles the actual process of borrowing books to members based on rank and position in queue.
      * @return 
      */
-    public static boolean borrowBook() {
+    public static int borrowBooks() {
+        int borrowedBooksCount = 0;
         //Next for loop iterates through all book requests. Book requests are handled one after the other
         for (String key : bookRequests.keySet()) {
             String bookTitle = key;
@@ -181,7 +183,7 @@ public class Club {
                         Members m = (Members) requesters.get(h);
                         if (m.name.equalsIgnoreCase(nameInQueue)) {
                             /*
-                            Next for loop searches the club's book collection for the requested book.
+                            Next for loop searches the club's books collection for the requested book.
                             If the book is found and a copy is available, it is borrowed to the current member.
                             */
                             for (int i = 0; i < books.size(); i++) {
@@ -189,6 +191,7 @@ public class Club {
                                 if (b.title.equalsIgnoreCase(bookTitle) && b.isAvailable) {
                                     System.out.println("Borrowed a copy of \"" + bookTitle + "\" to " + m.name);
                                     b.isAvailable = false;
+                                    borrowedBooksCount++;
                                     break;
                                 }
                             }
@@ -198,7 +201,8 @@ public class Club {
                 }
             }
         }
-        return false;
+        
+        return borrowedBooksCount;
     }
 
     /**

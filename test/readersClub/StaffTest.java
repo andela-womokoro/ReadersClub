@@ -29,8 +29,8 @@ public class StaffTest {
     @Test
     public void testRequestForBook() {
         System.out.println("requestForBook");
-        boolean requestGranted = instance.requestForBook();
-        assertTrue(requestGranted);
+        boolean requestMade = instance.requestForBook("Some book title");
+        assertTrue(requestMade);
     }
 
     /**
