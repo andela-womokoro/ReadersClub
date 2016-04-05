@@ -176,17 +176,4 @@ public class Club {
         }
         return false;
     }
-    
-    /**
-     * utility method to pause the program for a specified no of seconds during execution
-     * @param secs 
-     */
-    public static void pauseProg(int secs){
-        try{
-            Thread.sleep(secs * 1000);
-        }
-        catch(InterruptedException ie){
-           System.out.println(ie.toString());
-        }
-    }
 }

@@ -14,13 +14,10 @@ public class Book {
     public boolean isAvailable;
     
     public Book(String title, String isbn, String author) {
-        //System.out.print("Creating a book \""+ title+"\" for the Readers' club... ");
-        //Club.pauseProg(1);
         this.title = title;
         this.isbn = isbn;
         this.author = author;
         this.isAvailable = true;
-        //System.out.print("Done.\n");
     }
     
     public boolean setNoOfCopies(int copies){

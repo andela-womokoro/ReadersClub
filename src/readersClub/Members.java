@@ -15,14 +15,11 @@ public abstract class Members {
     public Date regDate;
     
     public Members(String name, String sex, int age, boolean isStaff){
-       //System.out.print("Creating a new Readers' club member "+ name+"... ");
-       //Club.pauseProg(1);
        this.name = name;
        this.sex = sex;
        this.age = age;
        this.isStaff = isStaff;
        this.regDate = new Date();
-       //System.out.print("Done.\n");
     }
     
     public String getName(){
