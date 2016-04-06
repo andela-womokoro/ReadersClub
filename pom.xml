@@ -69,9 +69,10 @@
 	<!-- BUILD DEPENDENCIES -->
 	<build>
 		<!-- SOURCE LOCATIONS -->
-		<sourceDirectory>src/main</sourceDirectory>
-		<testSourceDirectory>src/test</testSourceDirectory>
-		<resources>
+		<sourceDirectory>src/readersClub</sourceDirectory>
+		<testSourceDirectory>test/readersClub</testSourceDirectory>
+		<!--
+        <resources>
 			<resource>
 				<directory>src/resource</directory>
 				<excludes>
@@ -79,6 +80,7 @@
 				</excludes>
 			</resource>
 		</resources>
+        -->
 
 		<!-- PLUGINS FOR MANAGING PLUGINS -->
 		<pluginManagement>
