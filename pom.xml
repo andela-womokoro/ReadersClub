@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<!-- PROJECT OVERVIEW -->
-	<groupId>nyc.angus</groupId>
-	<artifactId>wordbrain-solver</artifactId>
+	<groupId></groupId>
+	<artifactId>ReadersClub</artifactId>
 	<version>1.0</version>
-	<name>WordBrain Solver</name>
-	<description>A solver for WordBrain.</description>
+	<name>Readers Club</name>
+	<description>A simple java application simulating a readers club</description>
 	<url>https://github.com/andela-womokoro/ReadersClub/</url>
 
 	<!-- PROJECT PROPERTIES -->
