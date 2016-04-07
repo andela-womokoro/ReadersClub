@@ -153,8 +153,7 @@
 				<!-- Specify classes to ignore in code coverage -->
 				<configuration>
 					<excludes>
-						<exclude>**/ui/**</exclude>
-						<exclude>**/StartSolverUi**</exclude>
+						<exclude>readersClub/Members.class</exclude>
 					</excludes>
 				</configuration>
 			</plugin>
