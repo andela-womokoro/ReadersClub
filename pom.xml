@@ -155,6 +155,7 @@
 					<excludes>
 						<exclude>readersClub/Members.class</exclude>
                         <exclude>readersClub/Club.class</exclude>
+                        <exclude>readersClub/Book.class</exclude>
 					</excludes>
 				</configuration>
 			</plugin>
