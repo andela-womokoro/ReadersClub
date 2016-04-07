@@ -152,6 +152,7 @@
 				</executions>
 				<!-- Specify classes to ignore in code coverage -->
 				<configuration>
+                    <!--
 					<excludes>
                         <exclude>readersClub/Book.class</exclude>
                         <exclude>readersClub/Club.class</exclude>
@@ -160,6 +161,7 @@
                         <exclude>readersClub/Staff.class</exclude>
                         <exclude>readersClub/Student.class</exclude>
 					</excludes>
+                    -->
 				</configuration>
 			</plugin>
 			<plugin>
