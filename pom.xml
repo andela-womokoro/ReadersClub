@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<!-- PROJECT OVERVIEW -->
-	<groupId>lag.wil</groupId>
+	<groupId>readersClub</groupId>
 	<artifactId>ReadersClub</artifactId>
 	<version>1.0</version>
 	<name>Readers Club</name>
