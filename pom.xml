@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>readersClub</groupId>
@@ -49,7 +48,6 @@
                             <goal>prepare-agent</goal>
                         </goals>
                         <configuration>
-                            <!--<destFile>${project.build.directory}/coverage-reports/jacoco.exec</destFile>-->
                             <propertyName>surefireArgLine</propertyName>
                         </configuration>
                     </execution>
@@ -59,12 +57,6 @@
                         <goals>
                             <goal>report</goal>
                         </goals>
-                        <!--
-                        <configuration>
-                            <dataFile>${project.build.directory}/coverage-reports/jacoco.exec</dataFile>
-                            <outputDirectory>${project.reporting.outputDirectory}/jacoco</outputDirectory>
-                        </configuration>
-                        -->
                     </execution>
                 </executions>
             </plugin>
@@ -105,5 +97,4 @@
 			</plugin>
         </plugins>
     </build>
-
 </project>
