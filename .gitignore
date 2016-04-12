@@ -7,3 +7,4 @@ nbactions.xml
 .nb-gradle/
 .DS_Store
 .jacocoverage
+target/
