@@ -1,9 +1,7 @@
-## ReadersClub
+## Readers Club
 
 [![Build Status](https://travis-ci.org/andela-womokoro/ReadersClub.svg)](https://travis-ci.org/andela-womokoro/ReadersClub)
 [![Coverage Status](https://coveralls.io/repos/github/andela-womokoro/ReadersClub/badge.svg?branch=master)](https://coveralls.io/github/andela-womokoro/ReadersClub?branch=master)
-
-## Readers Club
 
 The readers club application is just a simple Java application whose sole purpose is to demonstrates some of the features of the Java programming language. The application simulates a readers' club where the following holds true:
 
@@ -19,9 +17,9 @@ The readers club application is just a simple Java application whose sole purpos
 
 Install the following software before cloning the application from github.
 
-- Java Development Kit (JDK) 1.8
-- Git
-- Netbeans 8.1 IDE (optional)
+- [Java Development Kit (JDK) 1.8] (http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+- [Git] (https://git-scm.com/downloads)
+- [Netbeans 8.1 IDE] (https://netbeans.org/downloads/) (optional)
 
 After installing the above software, clone the repository from github into your working directory using the following command:
 
