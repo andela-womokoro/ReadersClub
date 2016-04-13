@@ -11,6 +11,8 @@
 
 ## Contributing
 
-## Credits
+[Wilson Omokoro](https://github.com/andela-womokoro)
 
 ## License
+
+Readers Club is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
