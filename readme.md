@@ -7,7 +7,7 @@ The readers club application is just a simple Java application whose sole purpos
 
 - the club has members
 - members belong to one of two categories; staff or students
-- members are place in two lists; one for staff, and the other for students
+- members are placed in two lists; one for staff, and the other for students
 - the club keeps books
 - books can be borrowed to members who request for them
 - books are borrowed to members on a first-in-first-out (FIFO) basis, i.e. based on the time each member joins the club
@@ -36,15 +36,10 @@ You can run the readers club application from Netbeans, or your command prompt.
 - Select the Readers Club project from the project explorer under the Projects Tab then right-click on it
 - Click on properties
 - Click on Run
-- Make sure the Main Class is set to Club. (Make sure to use the fully qualified name i.e. readersClub.Club)
+- Make sure the Main Class is set to Club. (Make sure to use the fully qualified class name i.e. readersClub.Club)
 - Click OK.
 - Clean and build your project by right-clicking on it under the Projects tab and selecting "Clean and Build" from the sub-menu 
 - Run Project by right-clicking on the project and selecting "Run" from the sub-menu
-
-### Running the application from a command prompt
-
-To run the application, open a terminal window or command prompt (on Microsoft Windows), navigate to the directory where you cloned the project into...
-
 
 ## Contributing
 
